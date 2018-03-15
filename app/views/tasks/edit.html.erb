@@ -1,0 +1,20 @@
+<h1>編集</h1>
+<% if flash["alert"].present? %>
+<div class="red">
+  <h2>【エラー内容】</h2>
+  <% flash["alert"].each do |value| %>
+    <%= content_tag(:div, value) %>
+  <% end %>
+<% end %>
+</div>
+
+<%= form_with model: @task, local: true do |form| %>
+<p>タイトル<br>
+  <%= form.text_field :title %>
+</p>
+<p>内容<br>
+  <%= form.text_area  :body %>
+</p>
+<%= form.submit "編集" %>
+<% end %>
+<%= link_to "詳細へ戻る", task_path(@task) %><br>
